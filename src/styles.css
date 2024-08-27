@@ -1,0 +1,40 @@
+.chatbox {
+    width: 50%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chatbox .card-header {
+    background-color: #9b59b6;
+    border-bottom: none;
+}
+
+.chatbox .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbox .message {
+    max-width: 75%;
+}
+
+.chatbox .chat-body {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.chatbox .chat-body .message {
+    font-size: 14px;
+}
+
+.chatbox .chat-body .bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.chatbox .chat-body .bg-primary {
+    background-color: #9b59b6 !important;
+}
