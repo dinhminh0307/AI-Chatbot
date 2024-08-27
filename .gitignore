@@ -1,1 +1,8 @@
-.node_modules/
+node_modules/
+MetEV/
+.ideas/
+*.txt
+vocab.json
+MetEV/src/fine-tuned-gpt2/vocab.json
+MetEV/src/fine-tuned-gpt2/model.safetensors
+/MetEV
