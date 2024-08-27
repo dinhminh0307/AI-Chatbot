@@ -8,7 +8,54 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container d-flex justify-content-center mt-5">
+    <div class="container-fluid d-flex p-0">
+        <!-- Sidebar -->
+        <div class="sidebar d-flex flex-column">
+            <div class="logo text-center text-white my-4">
+                <h2>CHaT BoT</h2>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="#">Chat Generator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Feedback <span class="badge badge-pill badge-light">16</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Prompt Library <span class="badge badge-pill badge-light">18</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Saves <span class="badge badge-pill badge-light">10</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Favorite <span class="badge badge-pill badge-light">13</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">History <span class="badge badge-pill badge-light">15</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Statistics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log Out</a>
+                </li>
+            </ul>
+            <div class="mt-auto p-3">
+                <div class="user-profile d-flex align-items-center">
+                    <img src="https://via.placeholder.com/40" alt="User Image" class="rounded-circle mr-3">
+                    <div class="user-info text-white">
+                        <h6>Adam Williams</h6>
+                        <p class="mb-0">info@gmail.com</p>
+                        <a href="#" class="badge badge-primary">Upgrade To Pro</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="chatbox-container">
         <div class="card chatbox">
             <div class="card-header text-white d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">

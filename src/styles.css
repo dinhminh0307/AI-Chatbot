@@ -1,11 +1,66 @@
-.chatbox {
-    width: 50%;
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container-fluid {
+    height: 100%;
+    display: flex;
+}
+
+.sidebar {
+    width: 50%; /* Takes up 50% of the screen width */
+    background-color: #1b2a49; /* Sidebar background color */
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.sidebar .logo {
+    padding: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+    padding: 15px 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar .nav-link.active {
+    background-color: #ff6f61;
+    border-radius: 8px;
+}
+
+.sidebar .user-profile {
+    background-color: #2a3d66;
+    padding: 10px;
     border-radius: 10px;
-    overflow: hidden;
+}
+
+.chatbox-container {
+    width: 50%;   /* Takes up the remaining 50% of the screen width */
+    height: 100%; /* Takes up the full height of the screen */
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.chatbox {
+    width: 100%;  /* Full width within the container */
+    height: 100%; /* Full height within the container */
+    border-radius: 0; /* Remove border radius to fit the screen's edge */
+    display: flex;
+    flex-direction: column;
 }
 
 .chatbox .card-header {
-    background-color: #9b59b6;
+    background-color: #1b2a49; /* Updated to match the sidebar color */
     border-bottom: none;
 }
 
@@ -23,8 +78,9 @@
 }
 
 .chatbox .chat-body {
-    height: 300px;
+    flex-grow: 1;
     overflow-y: auto;
+    padding-bottom: 10px; /* Add padding at the bottom */
 }
 
 .chatbox .chat-body .message {
@@ -37,4 +93,8 @@
 
 .chatbox .chat-body .bg-primary {
     background-color: #9b59b6 !important;
+}
+
+.chatbox .card-footer {
+    padding: 10px;
 }
