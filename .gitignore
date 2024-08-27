@@ -1,7 +1,9 @@
 node_modules/
-MetEV/
 .ideas/
 *.txt
 vocab.json
 MetEV/src/fine-tuned-gpt2/vocab.json
 MetEV/src/fine-tuned-gpt2/model.safetensors
+MetEV/src/results/checkpoint-13/model.safetensors
+MetEV/src/results/optimizer.pt
+MetEV/src/results/checkpoint-13/optimizer.pt
