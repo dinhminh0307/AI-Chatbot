@@ -9,3 +9,5 @@ MetEV/src/results/optimizer.pt
 MetEV/src/results/checkpoint-13/optimizer.pt
 *.safetensors
 *.pt
+
+.vercel
