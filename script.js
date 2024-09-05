@@ -93,7 +93,7 @@ function sendPromptToServer(prompt) {
     console.log(prompt);
     addTypingIndicator();  // Show typing indicator
 
-    fetch('http://127.0.0.1:5000/generate', {
+    fetch('http://192.168.1.3:5000/generate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
