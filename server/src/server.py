@@ -5,8 +5,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 # Load the fine-tuned model and tokenizer
-model = GPT2LMHeadModel.from_pretrained('../../MetEV/src/fine-tuned-gpt2')
-tokenizer = GPT2Tokenizer.from_pretrained('../../MetEV/src/fine-tuned-gpt2')
+model = GPT2LMHeadModel.from_pretrained('../../Model/src/fine-tuned-gpt2')
+tokenizer = GPT2Tokenizer.from_pretrained('../../Model/src/fine-tuned-gpt2')
 
 # Set the pad_token to eos_token or add a custom pad token
 tokenizer.pad_token = tokenizer.eos_token

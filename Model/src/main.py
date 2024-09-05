@@ -18,7 +18,7 @@ def fine_tune_gpt2(dataset_path):
     training_args = TrainingArguments(
         output_dir='./results',
         overwrite_output_dir=True,
-        num_train_epochs=1,
+        num_train_epochs=12,
         per_device_train_batch_size=2,
         save_steps=10_000,
         save_total_limit=2,
@@ -36,4 +36,4 @@ def fine_tune_gpt2(dataset_path):
     model.save_pretrained("./fine-tuned-gpt2")
     tokenizer.save_pretrained("./fine-tuned-gpt2")
 
-fine_tune_gpt2("C:/Users/doanl/Downloads/dataset.json")
+fine_tune_gpt2("./metev_data.json")

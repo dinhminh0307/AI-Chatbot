@@ -27,14 +27,14 @@ def generate_text(prompt, max_length=100, num_return_sequences=1, temperature=0.
         pad_token_id=tokenizer.eos_token_id
     )
 
+    # Decode the generated text and return it
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    print(generate_text)
     return generated_text
 
 
 # Example prompts
 prompts = [
-    "Please provide a detailed comparison between METev and its top three competitors in the renewable energy market."
+    "What is METEV?"
 ]
 
 # Generate and print outputs for each prompt
