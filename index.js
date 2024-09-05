@@ -17,22 +17,6 @@ app.get('/', (req, res) => {
     res.sendFile(chatBotPath);
 });
 
-// app.post('/', async (req, res) => {
-//     const prompt = req.body.prompt;
-//     const maxLength = req.body.max_length || 50;
-
-//     try {
-//         const response = await axios.post('http://localhost:5000/generate', {
-//             prompt: prompt,
-//             max_length: maxLength
-//         });
-
-//         res.json(response.data);
-//     } catch (error) {
-//         console.error('Error generating text:', error);
-//         res.status(500).send('Error generating text');
-//     }
-// });
 
 app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');
