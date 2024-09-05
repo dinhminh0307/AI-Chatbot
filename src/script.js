@@ -9,15 +9,6 @@ document.getElementById('user-input').addEventListener('keypress', function(even
     }
 });
 
-document.getElementById('send-btn').addEventListener('click', function() {
-    let userInput = document.getElementById('user-input').value;
-    if (userInput.trim() !== "") {
-        addUserMessage(userInput);
-        sendPromptToServer(userInput);  // Send the user input to the server
-        document.getElementById('user-input').value = '';  // Clear input field
-    }
-});
-
 function addUserMessage(message) {
     let chatBody = document.getElementById('chat-body');
 
