@@ -24,9 +24,10 @@ function addUserMessage(message) {
     let userMessageDiv = document.createElement('div');
     userMessageDiv.classList.add('d-flex', 'flex-row-reverse', 'mb-3');
 
+    // Replace avatar icon with user image
     let avatarDiv = document.createElement('div');
     avatarDiv.classList.add('avatar', 'bg-secondary', 'text-center', 'ml-2');
-    avatarDiv.innerHTML = '<i class="fas fa-user text-white"></i>';
+    avatarDiv.innerHTML = '<img src="assets/user.jpg" alt="User Avatar" class="rounded-circle" width="40" height="40">';
 
     let messageDiv = document.createElement('div');
     messageDiv.classList.add('message', 'bg-primary', 'text-white', 'p-2', 'rounded');
@@ -45,9 +46,10 @@ function addBotMessage(message) {
     let botMessageDiv = document.createElement('div');
     botMessageDiv.classList.add('d-flex', 'flex-row', 'mb-3');
 
+    // Replace avatar icon with bot image (MetEv)
     let avatarDiv = document.createElement('div');
     avatarDiv.classList.add('avatar', 'bg-primary', 'text-center', 'mr-2');
-    avatarDiv.innerHTML = '<i class="fas fa-robot text-white"></i>';
+    avatarDiv.innerHTML = '<img src="assets/MetEv.jpg" alt="Bot Avatar" class="rounded-circle" width="40" height="40">';
 
     let messageDiv = document.createElement('div');
     messageDiv.classList.add('message', 'bg-secondary', 'text-white', 'p-2', 'rounded');
@@ -67,13 +69,14 @@ function addTypingIndicator() {
     typingDiv.setAttribute('id', 'typing-indicator');
     typingDiv.classList.add('d-flex', 'flex-row', 'mb-3');
 
+    // Replace avatar icon with bot image (MetEv)
     let avatarDiv = document.createElement('div');
     avatarDiv.classList.add('avatar', 'bg-primary', 'text-center', 'mr-2');
-    avatarDiv.innerHTML = '<i class="fas fa-robot text-white"></i>';
+    avatarDiv.innerHTML = '<img src="assets/MetEv.jpg" alt="Bot Avatar" class="rounded-circle" width="40" height="40">';
 
     let messageDiv = document.createElement('div');
     messageDiv.classList.add('message', 'bg-light', 'text-muted', 'p-2', 'rounded');
-    messageDiv.innerHTML = '<i class="fas fa-ellipsis-h"></i> ChatBot is typing...';
+    messageDiv.innerHTML = '<i class="fas fa-ellipsis-h"></i> METEV Bot is typing...';
 
     typingDiv.appendChild(avatarDiv);
     typingDiv.appendChild(messageDiv);
