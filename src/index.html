@@ -7,7 +7,13 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme" id="body-theme">
+
+    <!-- Small draggable toggle button -->
+    <button id="toggle-theme-btn" class="btn btn-warning rounded-circle" style="position: absolute; top: 10px; left: 10px;">
+        <i class="fas fa-adjust"></i> <!-- FontAwesome Icon -->
+    </button>
+
     <div class="container-fluid d-flex p-0">
         <!-- Sidebar -->
         <div class="sidebar d-flex flex-column">
@@ -45,7 +51,7 @@
             </ul>
             <div class="mt-auto p-3">
                 <div class="user-profile d-flex align-items-center">
-                    <img src="https://via.placeholder.com/40" alt="User Image" class="rounded-circle mr-3">
+                    <img src="assets/user.jpg" alt="User Image" class="rounded-circle mr-3" width="30" height="30">
                     <div class="user-info text-white">
                         <h6>Adam Williams</h6>
                         <p class="mb-0">info@gmail.com</p>
@@ -54,45 +60,43 @@
                 </div>
             </div>
         </div>
-        
-    <div class="chatbox-container">
-        <div class="card chatbox">
-            <div class="card-header text-white d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                    <div class="avatar bg-white text-center mr-3">
-                        <i class="fas fa-robot text-secondary"></i>
-                        <img src="assets/MetEv.jpg" alt="Bot Avatar" class="rounded-circle" width="40" height="40">
+
+        <div class="chatbox-container">
+            <div class="card chatbox">
+                <div class="card-header text-white d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar bg-white text-center mr-3">
+                            <img src="assets/MetEv.jpg" alt="Bot Avatar" class="rounded-circle" width="40" height="40">
+                        </div>
+                        <div>
+                            <h6 class="mb-0">METEV Bot</h6>
+                            <small class="text-success">online</small>
+                        </div>
                     </div>
-                    <div>
-                        <h6 class="mb-0">METEV Bot</h6>
-                        <small class="text-success">online</small>
+                    <button class="btn btn-outline-light btn-sm">Logout</button>
+                </div>
+                <div class="card-body chat-body" id="chat-body">
+                    <div class="d-flex mb-3">
+                        <div class="avatar bg-light text-center mr-2">
+                            <img src="assets/MetEv.jpg" alt="Bot Avatar" class="rounded-circle" width="40" height="40">
+                        </div>
+                        <div class="message bg-light p-2 rounded">
+                            Hi, it's MET EV Bot. How can I help you?
+                        </div>
                     </div>
                 </div>
-                <button class="btn btn-outline-light btn-sm">Logout</button>
-            </div>
-            <div class="card-body chat-body" id="chat-body">
-                <div class="d-flex mb-3">
-                    <div class="avatar bg-light text-center mr-2">
-                        <img src="assets/MetEv.jpg" alt="Bot Avatar" class="rounded-circle" width="40" height="40">
-                    </div>
-                    <div class="message bg-light p-2 rounded">
-                        Hi, it's MET EV Bot. How can I help you?
-                    </div>
+
+                <div class="card-footer d-flex">
+                    <input type="text" class="form-control" id="user-input" placeholder="Ask your question...">
+                    <button id="send-btn" class="btn btn-primary ml-2">Send</button>
                 </div>
+
             </div>
-            
-            <div class="card-footer d-flex">
-                <input type="text" class="form-control" id="user-input" placeholder="Ask your question...">
-                <button id="send-btn" class="btn btn-primary ml-2">Send</button>
-            </div>
-            
         </div>
+
     </div>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Include FontAwesome -->
 </body>
 </html>

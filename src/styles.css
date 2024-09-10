@@ -1,3 +1,4 @@
+/* Base Styles */
 body, html {
     height: 100%;
     margin: 0;
@@ -13,35 +14,9 @@ body, html {
 
 .sidebar {
     width: 50%; /* Takes up 50% of the screen width on large screens */
-    background-color: #1b2a49;
     display: flex;
     flex-direction: column;
     padding: 0;
-}
-
-.sidebar .logo {
-    padding: 10px;
-    font-size: 1.5rem;
-    color: #fff;
-}
-
-.sidebar .nav-link {
-    color: #fff;
-    padding: 15px 20px;
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-}
-
-.sidebar .nav-link.active {
-    background-color: #ff6f61;
-    border-radius: 8px;
-}
-
-.sidebar .user-profile {
-    background-color: #2a3d66;
-    padding: 10px;
-    border-radius: 10px;
 }
 
 .chatbox-container {
@@ -61,7 +36,6 @@ body, html {
 }
 
 .chatbox .card-header {
-    background-color: #1b2a49;
     border-bottom: none;
 }
 
@@ -84,56 +58,88 @@ body, html {
     padding-bottom: 10px;
 }
 
-.chatbox .chat-body .message {
-    font-size: 14px;
-}
-
-.chatbox .chat-body .bg-light {
-    background-color: #f8f9fa !important;
-}
-
-.chatbox .chat-body .bg-primary {
-    background-color: #9b59b6 !important;
-}
-
 .chatbox .card-footer {
     padding: 10px;
 }
 
-/* Media Queries for responsiveness */
-
-/* Tablet and below */
-@media (max-width: 991px) {
-    .container-fluid {
-        flex-direction: column; /* Stack the sidebar and chatbox vertically */
-    }
-
-    .sidebar {
-        width: 100%; /* Full width for smaller screens */
-        height: auto;
-    }
-
-    .chatbox-container {
-        width: 100%; /* Full width for the chatbox on smaller screens */
-    }
+/* Dark Theme */
+body.dark-theme {
+    background-color: #0d0d0d;
 }
 
-/* Mobile and below */
-@media (max-width: 767px) {
-    .sidebar {
-        display: none; /* Hide the sidebar on mobile devices for a better experience */
-    }
-
-    .chatbox-container {
-        width: 100%; /* Ensure chatbox takes full width on mobile */
-        padding: 10px;
-    }
-
-    .chatbox .card-header, .chatbox .card-footer {
-        padding: 10px;
-    }
-
-    .chatbox .card-footer {
-        padding-bottom: 5px;
-    }
+.dark-theme .sidebar {
+    background-color: #1c1c1c;
 }
+
+.dark-theme .sidebar .nav-link {
+    color: #c3ff00;
+}
+
+.dark-theme .sidebar .nav-link.active {
+    background-color: #ff6f61;
+}
+
+.dark-theme .chatbox .card-header {
+    background-color: #1c1c1c;
+}
+
+.dark-theme .chatbox .chat-body {
+    background-color: #0d0d0d;
+}
+
+.dark-theme .chatbox .message {
+    color: #ffffff;
+}
+
+.dark-theme .chatbox .bg-light {
+    background-color: #2c2c2c !important;
+    color: #ffffff;
+}
+
+/* Light Theme */
+body.light-theme {
+    background-color: #ffffff;
+}
+
+.light-theme .sidebar {
+    background-color: #1b2a49;
+}
+
+.light-theme .sidebar .nav-link {
+    color: #ffffff;
+}
+
+.light-theme .sidebar .nav-link.active {
+    background-color: #ff6f61;
+}
+
+.light-theme .chatbox .card-header {
+    background-color: #1b2a49;
+}
+
+.light-theme .chatbox .chat-body {
+    background-color: #f8f9fa;
+}
+
+.light-theme .chatbox .message {
+    color: #000000;
+}
+
+.light-theme .chatbox .bg-light {
+    background-color: #f8f9fa !important;
+    color: #000000;
+}
+
+/* Ensure the toggle button is small and can be dragged */
+#toggle-theme-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: grab;
+}
+
+/* Make it look like a button */
+#toggle-theme-btn:active {
+    cursor: grabbing;
+}
+

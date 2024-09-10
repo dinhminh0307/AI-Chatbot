@@ -151,3 +151,44 @@ function fetchRandomTextWithMETEV() {
             return "METEV random text is unavailable at the moment.";
         });
 }
+
+// Grab the body and button elements
+const body = document.getElementById('body-theme');
+const toggleButton = document.getElementById('toggle-theme-btn');
+
+let offsetX, offsetY, isDragging = false;
+
+// Function to toggle between themes
+function toggleTheme() {
+    if (body.classList.contains('dark-theme')) {
+        body.classList.remove('dark-theme');
+        body.classList.add('light-theme');
+    } else {
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+    }
+}
+
+// Drag start function
+toggleButton.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    offsetX = e.clientX - toggleButton.offsetLeft;
+    offsetY = e.clientY - toggleButton.offsetTop;
+});
+
+// Dragging function
+document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+        toggleButton.style.left = `${e.clientX - offsetX}px`;
+        toggleButton.style.top = `${e.clientY - offsetY}px`;
+    }
+});
+
+// Stop dragging
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+// Add event listener to toggle theme
+toggleButton.addEventListener('click', toggleTheme);
+
