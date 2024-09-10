@@ -1,65 +1,6 @@
-/* Base Styles */
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-}
-
-.container-fluid {
-    height: 100%;
-    display: flex;
-    flex-direction: row; /* Default for larger screens */
-}
-
-.sidebar {
-    width: 50%; /* Takes up 50% of the screen width on large screens */
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-}
-
-.chatbox-container {
-    width: 50%;   /* Takes up the remaining 50% of the screen width */
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-}
-
-.chatbox {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.chatbox .card-header {
-    border-bottom: none;
-}
-
-.chatbox .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.chatbox .message {
-    max-width: 75%;
-}
-
-.chatbox .chat-body {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-bottom: 10px;
-}
-
-.chatbox .card-footer {
-    padding: 10px;
+/* Ensure the toggle button is styled properly */
+#toggle-theme-btn {
+    z-index: 1000; /* Keep it on top of all other elements */
 }
 
 /* Dark Theme */
@@ -130,16 +71,126 @@ body.light-theme {
     color: #000000;
 }
 
-/* Ensure the toggle button is small and can be dragged */
-#toggle-theme-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    cursor: grab;
+/* General body and html settings */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-/* Make it look like a button */
-#toggle-theme-btn:active {
-    cursor: grabbing;
+/* Container for the sidebar and chatbox */
+.container-fluid {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1; /* Ensures the container expands */
+}
+
+/* Sidebar settings */
+.sidebar {
+    width: 25%; /* Sidebar occupies 25% of the screen */
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+/* Chatbox container */
+.chatbox-container {
+    width: 75%;  /* Adjust width to fill remaining space */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: #000000;
+    padding: 10px;
+}
+
+/* Chatbox */
+.chatbox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card header styles for the chatbox */
+.chatbox .card-header {
+    background-color: #1c1c1c;
+    border-bottom: none;
+}
+
+/* Message styling */
+.chatbox .message {
+    max-width: 75%;
+    background-color: #424a54; /* Default background color for all messages */
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Bot messages */
+.chatbox .message.bg-light {
+    background-color: #424a54 !important; /* Ensure consistency for bot messages */
+    color: #ffffff;
+}
+
+/* Remove the blue background from avatar section */
+.avatar {
+    background-color: transparent !important; /* Remove the blue background */
+}
+
+/* Avatar image styling */
+.avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Ensure messages grow and maintain size */
+.chatbox .chat-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+/* Footer for chatbox */
+.chatbox .card-footer {
+    padding: 10px;
+}
+
+/* Toggle button */
+#toggle-theme-btn {
+    z-index: 1000;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 991px) {
+    .container-fluid {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .chatbox-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        display: none;
+    }
+
+    .chatbox-container {
+        width: 100%;
+    }
 }
 

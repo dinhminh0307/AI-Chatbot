@@ -152,43 +152,27 @@ function fetchRandomTextWithMETEV() {
         });
 }
 
-// Grab the body and button elements
 const body = document.getElementById('body-theme');
 const toggleButton = document.getElementById('toggle-theme-btn');
+const toggleIcon = document.getElementById('toggle-icon');
 
-let offsetX, offsetY, isDragging = false;
-
-// Function to toggle between themes
+// Function to toggle between themes and switch the icon
 function toggleTheme() {
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
         body.classList.add('light-theme');
+        toggleIcon.classList.remove('bi-toggle-off');
+        toggleIcon.classList.add('bi-toggle-on');
     } else {
         body.classList.remove('light-theme');
         body.classList.add('dark-theme');
+        toggleIcon.classList.remove('bi-toggle-on');
+        toggleIcon.classList.add('bi-toggle-off');
     }
 }
 
-// Drag start function
-toggleButton.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - toggleButton.offsetLeft;
-    offsetY = e.clientY - toggleButton.offsetTop;
-});
-
-// Dragging function
-document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-        toggleButton.style.left = `${e.clientX - offsetX}px`;
-        toggleButton.style.top = `${e.clientY - offsetY}px`;
-    }
-});
-
-// Stop dragging
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-});
-
-// Add event listener to toggle theme
+// Add event listener to the toggle button
 toggleButton.addEventListener('click', toggleTheme);
+
+
 
