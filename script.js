@@ -1,3 +1,4 @@
+// Existing event listeners for user input (no changes)
 document.getElementById('user-input').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         let userInput = event.target.value;
@@ -18,6 +19,7 @@ document.getElementById('send-btn').addEventListener('click', function() {
     }
 });
 
+// Add user message to the chat body
 function addUserMessage(message) {
     let chatBody = document.getElementById('chat-body');
 
@@ -40,6 +42,7 @@ function addUserMessage(message) {
     chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom of the chat
 }
 
+// Add bot message to the chat body
 function addBotMessage(message) {
     let chatBody = document.getElementById('chat-body');
 
@@ -62,7 +65,7 @@ function addBotMessage(message) {
     chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom of the chat
 }
 
-
+// Add product images to the chat body
 function addProductImages() {
     let chatBody = document.getElementById('chat-body');
 
@@ -82,11 +85,45 @@ function addProductImages() {
         imgElement.alt = product.name;
         imgElement.width = 100; // Adjust as necessary
         imgElement.height = 100; // Adjust as necessary
-        imgElement.classList.add('rounded', 'product-image'); // 'product-image' for applying custom styles
+        imgElement.classList.add('rounded', 'product-image');
 
         // Add click event to open the image in focus (modal-like behavior)
         imgElement.addEventListener('click', function () {
             openImageInFocus(product.file, product.name);
+        });
+
+        imageDiv.appendChild(imgElement);
+    });
+
+    chatBody.appendChild(imageDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom of the chat
+}
+
+// Add station images to the chat body
+function addStationImages() {
+    let chatBody = document.getElementById('chat-body');
+
+    let imageDiv = document.createElement('div');
+    imageDiv.classList.add('d-flex', 'justify-content-around', 'mb-3');
+
+    // Create clickable image elements for station1, station2, and station3
+    const stations = [
+        { name: 'Station1', file: 'station1.png', url: '#station1' },
+        { name: 'Station2', file: 'station2.png', url: '#station2' },
+        { name: 'Station3', file: 'station3.png', url: '#station3' }
+    ];
+
+    stations.forEach(station => {
+        let imgElement = document.createElement('img');
+        imgElement.src = `assets/${station.file}`;
+        imgElement.alt = station.name;
+        imgElement.width = 100; // Adjust as necessary
+        imgElement.height = 100; // Adjust as necessary
+        imgElement.classList.add('rounded', 'station-image');
+
+        // Add click event to open the image in focus (modal-like behavior)
+        imgElement.addEventListener('click', function () {
+            openImageInFocus(station.file, station.name);
         });
 
         imageDiv.appendChild(imgElement);
@@ -122,7 +159,6 @@ function openImageInFocus(imageFile, imageName) {
     });
 }
 
-
 function addTypingIndicator() {
     let chatBody = document.getElementById('chat-body');
 
@@ -153,23 +189,24 @@ function removeTypingIndicator() {
     }
 }
 
-// Function to handle user input and respond locally based on keywords
+// Function to handle user input and respond based on keywords
 function handleUserInput(prompt) {
     addTypingIndicator();  // Show typing indicator
     
     // Define the keyword-response map
     const responses = {
         "product": "We offer various product lines: Electric bike, electric motorbikes, and electric KAGO. Detailed information on the products is below.",
-        "metev": "MET is an innovative technology company with a focus on producing smart, safe, economical electric transportation. Our strong electrical engineering, IOT and background coupled with our experience producing commercial drones allow us to innovate rapidly and effectively in the ever changing environment",
-        "introduction": "MET EV produces smart electric vehicles powered by smart AI-driven battery management systems including battery charging and swapping options. We seek to build a comprehensive ecosystem integrating products, services, community engagement, and a lifestyle emphasizing environmental and social impact.",
-        "battery": "One of METEV's standout features is its 2-minute battery swapping system. This service allows electric vehicle users to replace depleted batteries at stations in under 2 minutes, providing an additional 100 kilometers of range. This innovation eliminates long wait times for charging, making EV use more convenient and accessible for daily commuters.",
-        "engine": "Typically mounted in the hub or mid-drive position, it delivers smooth, silent acceleration and assists pedaling based on rider input. With power outputs ranging from 250W to 750W or more, it provides efficient energy conversion, extending riding range and enabling various speeds. The motor is controlled via a handlebar display or pedal sensor, offering different assist levels for versatile terrain adaptability."
+        "metev": "MET is an innovative technology company with a focus on producing smart, safe, economical electric transportation.",
+        "introduction": "MET EV produces smart electric vehicles powered by AI-driven battery management systems...",
+        "battery": "METEV's standout feature is its 2-minute battery swapping system...",
+        "engine": "Typically mounted in the hub or mid-drive position, it delivers smooth acceleration...",
+        "station": "Met experience center focuses on bringing new experiences to customers. BOOK A TEST DRIVE AT HERE."
     };
     
-    // Normalize the user input (convert to lowercase and trim whitespaces)
+    // Normalize user input
     const normalizedInput = prompt.toLowerCase().trim();
     
-    // Find the matching response based on the keywords
+    // Find the response based on keywords
     let response = null;
     for (let keyword in responses) {
         if (normalizedInput.includes(keyword)) {
@@ -178,33 +215,35 @@ function handleUserInput(prompt) {
         }
     }
 
-    // If no matching response found, fetch random text from API and inject METEV
+    // If no matching response, fetch random text
     if (!response) {
         fetchRandomTextWithMETEV().then((randomText) => {
             removeTypingIndicator();  // Remove typing indicator once response is ready
             addBotMessage(randomText);  // Display the bot's response in the chat
         });
     } else {
-        // Simulate a delay for the bot's response (to mimic processing time)
         setTimeout(() => {
             removeTypingIndicator();  // Remove typing indicator once response is ready
             addBotMessage(response);  // Display the bot's response in the chat
+
             if (normalizedInput.includes("product")) {
-                addProductImages();  // Display product images for product-related queries
+                addProductImages();  // Display product images
+            } else if (normalizedInput.includes("station")) {
+                addStationImages();  // Display station images
             }
         }, 1000);
     }
 }
 
-// Fetch random text from an API and insert "METEV" randomly in the text
+// Fetch random text from an API and insert "METEV"
 function fetchRandomTextWithMETEV() {
     return fetch('https://baconipsum.com/api/?type=meat-and-filler&paras=2')
         .then(response => response.json())
         .then(data => {
             let randomText = data.join(' ');
-            // Insert "METEV" randomly in the text
+            // Insert "METEV" every 5 words
             let words = randomText.split(' ');
-            let interval = Math.floor(words.length / 5); // Insert "METEV" every 5 words
+            let interval = Math.floor(words.length / 5);
             for (let i = interval; i < words.length; i += interval) {
                 words[i] = "METEV " + words[i];
             }
@@ -216,11 +255,11 @@ function fetchRandomTextWithMETEV() {
         });
 }
 
+// Toggle between light and dark themes
 const body = document.getElementById('body-theme');
 const toggleButton = document.getElementById('toggle-theme-btn');
 const toggleIcon = document.getElementById('toggle-icon');
 
-// Function to toggle between themes and switch the icon
 function toggleTheme() {
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
