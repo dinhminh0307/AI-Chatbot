@@ -69,8 +69,9 @@ function addBotMessage(message) {
 function addProductImages() {
     let chatBody = document.getElementById('chat-body');
 
+    // Create a container for the images
     let imageDiv = document.createElement('div');
-    imageDiv.classList.add('d-flex', 'justify-content-around', 'mb-3');
+    imageDiv.classList.add('image-container', 'mb-3');  // Add 'image-container' to align to the left
 
     // Create clickable image elements for KAGO, MB1, and MET2
     const products = [
@@ -99,12 +100,14 @@ function addProductImages() {
     chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom of the chat
 }
 
+
+
 // Add station images to the chat body
 function addStationImages() {
     let chatBody = document.getElementById('chat-body');
 
     let imageDiv = document.createElement('div');
-    imageDiv.classList.add('d-flex', 'justify-content-around', 'mb-3');
+    imageDiv.classList.add('image-container', 'mb-3');  // Add 'image-container' to align to the left
 
     // Create clickable image elements for station1, station2, and station3
     const stations = [
@@ -132,6 +135,7 @@ function addStationImages() {
     chatBody.appendChild(imageDiv);
     chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom of the chat
 }
+
 
 // Function to open image in focus (modal-like behavior)
 function openImageInFocus(imageFile, imageName) {
@@ -197,7 +201,7 @@ function handleUserInput(prompt) {
     const responses = {
         "product": "We offer various product lines: Electric bike, electric motorbikes, and electric KAGO. Detailed information on the products is below.",
         "metev": "MET is an innovative technology company with a focus on producing smart, safe, economical electric transportation.",
-        "introduction": "MET EV produces smart electric vehicles powered by AI-driven battery management systems...",
+        "introduction": "MET EV produces smart electric vehicles powered by smart AI-driven battery management systems including battery charging and swapping options. We seek to build a comprehensive ecosystem integrating products, services, community engagement, and a lifestyle emphasizing environmental and social impact.",
         "battery": "METEV's standout feature is its 2-minute battery swapping system...",
         "engine": "Typically mounted in the hub or mid-drive position, it delivers smooth acceleration...",
         "station": "Met experience center focuses on bringing new experiences to customers. BOOK A TEST DRIVE AT HERE."

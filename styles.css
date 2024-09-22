@@ -245,3 +245,15 @@ body, html {
     }
 }
 
+/* Align images to the left */
+.image-container {
+    display: flex;
+    justify-content: flex-start; /* Align images to the left */
+    gap: 0; /* Remove any gaps between images */
+}
+
+.image-container img {
+    margin: 0; /* Remove margins around images */
+    padding: 0;
+}
+
