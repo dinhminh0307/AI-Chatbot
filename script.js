@@ -46,7 +46,7 @@ function addBotMessage(message) {
     let botMessageDiv = document.createElement('div');
     botMessageDiv.classList.add('d-flex', 'flex-row', 'mb-3');
 
-    // Replace avatar icon with bot image (MetEv)
+    // Ensure the bot image is the same across the interface
     let avatarDiv = document.createElement('div');
     avatarDiv.classList.add('avatar', 'bg-primary', 'text-center', 'mr-2');
     avatarDiv.innerHTML = '<img src="assets/MetEv.jpg" alt="Bot Avatar" class="rounded-circle" width="40" height="40">';
@@ -61,6 +61,67 @@ function addBotMessage(message) {
     chatBody.appendChild(botMessageDiv);
     chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom of the chat
 }
+
+
+function addProductImages() {
+    let chatBody = document.getElementById('chat-body');
+
+    let imageDiv = document.createElement('div');
+    imageDiv.classList.add('d-flex', 'justify-content-around', 'mb-3');
+
+    // Create clickable image elements for KAGO, MB1, and MET2
+    const products = [
+        { name: 'KAGO', file: 'KAGO.png', url: '#kago' },
+        { name: 'MB1', file: 'MB1.png', url: '#mb1' },
+        { name: 'MET2', file: 'MET2.png', url: '#met2' }
+    ];
+
+    products.forEach(product => {
+        let imgElement = document.createElement('img');
+        imgElement.src = `assets/${product.file}`;
+        imgElement.alt = product.name;
+        imgElement.width = 100; // Adjust as necessary
+        imgElement.height = 100; // Adjust as necessary
+        imgElement.classList.add('rounded', 'product-image'); // 'product-image' for applying custom styles
+
+        // Add click event to open the image in focus (modal-like behavior)
+        imgElement.addEventListener('click', function () {
+            openImageInFocus(product.file, product.name);
+        });
+
+        imageDiv.appendChild(imgElement);
+    });
+
+    chatBody.appendChild(imageDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom of the chat
+}
+
+// Function to open image in focus (modal-like behavior)
+function openImageInFocus(imageFile, imageName) {
+    // Create a modal div
+    let modalDiv = document.createElement('div');
+    modalDiv.id = 'image-modal';
+    modalDiv.classList.add('image-modal');
+    
+    // Add the image and close button inside the modal
+    modalDiv.innerHTML = `
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img src="assets/${imageFile}" alt="${imageName}" class="focused-image">
+        </div>
+    `;
+
+    // Append modal to body
+    document.body.appendChild(modalDiv);
+
+    // Close the modal when clicking the close button or outside the image
+    modalDiv.addEventListener('click', function(event) {
+        if (event.target.classList.contains('close-btn') || event.target === modalDiv) {
+            modalDiv.remove();
+        }
+    });
+}
+
 
 function addTypingIndicator() {
     let chatBody = document.getElementById('chat-body');
@@ -98,11 +159,11 @@ function handleUserInput(prompt) {
     
     // Define the keyword-response map
     const responses = {
-        "product": "MetEV product is now in IOT application, Electric vehicle",
+        "product": "We offer various product lines: Electric bike, electric motorbikes, and electric KAGO. Detailed information on the products is below.",
         "metev": "MET is an innovative technology company with a focus on producing smart, safe, economical electric transportation. Our strong electrical engineering, IOT and background coupled with our experience producing commercial drones allow us to innovate rapidly and effectively in the ever changing environment",
-        "intro": "MET is an innovative technology company with a focus on producing smart, safe, economical electric transportation. Our strong electrical engineering, IOT and background coupled with our experience producing commercial drones allow us to innovate rapidly and effectively in the ever changing environment",
+        "introduction": "MET EV produces smart electric vehicles powered by smart AI-driven battery management systems including battery charging and swapping options. We seek to build a comprehensive ecosystem integrating products, services, community engagement, and a lifestyle emphasizing environmental and social impact.",
         "battery": "One of METEV's standout features is its 2-minute battery swapping system. This service allows electric vehicle users to replace depleted batteries at stations in under 2 minutes, providing an additional 100 kilometers of range. This innovation eliminates long wait times for charging, making EV use more convenient and accessible for daily commuters.",
-        "engine": "Typically mounted in the hub or mid-drive position, it delivers smooth, silent acceleration and assists pedaling based on rider input. With power outputs ranging from 250W to 750W or more, it provides efficient energy conversion, extending riding range and enabling various speeds. The motor is controlled via a handlebar display or pedal sensor, offering different assist levels for versatile terrain adaptability." 
+        "engine": "Typically mounted in the hub or mid-drive position, it delivers smooth, silent acceleration and assists pedaling based on rider input. With power outputs ranging from 250W to 750W or more, it provides efficient energy conversion, extending riding range and enabling various speeds. The motor is controlled via a handlebar display or pedal sensor, offering different assist levels for versatile terrain adaptability."
     };
     
     // Normalize the user input (convert to lowercase and trim whitespaces)
@@ -128,6 +189,9 @@ function handleUserInput(prompt) {
         setTimeout(() => {
             removeTypingIndicator();  // Remove typing indicator once response is ready
             addBotMessage(response);  // Display the bot's response in the chat
+            if (normalizedInput.includes("product")) {
+                addProductImages();  // Display product images for product-related queries
+            }
         }, 1000);
     }
 }
@@ -173,6 +237,3 @@ function toggleTheme() {
 
 // Add event listener to the toggle button
 toggleButton.addEventListener('click', toggleTheme);
-
-
-
