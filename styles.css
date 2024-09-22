@@ -249,11 +249,36 @@ body, html {
 .image-container {
     display: flex;
     justify-content: flex-start; /* Align images to the left */
-    gap: 0; /* Remove any gaps between images */
+    gap: 10px; /* Add a small gap between images for better appearance */
+    flex-wrap: wrap; /* Ensure images wrap to the next line on smaller screens */
 }
 
 .image-container img {
     margin: 0; /* Remove margins around images */
     padding: 0;
+    max-width: 200px; /* Max width for images to ensure they scale responsively */
+    width: 100%; /* Ensure images take up full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the images fit nicely in their container */
+    transition: transform 0.2s ease; /* Smooth scaling transition */
+    border: 2px solid;
 }
+
+.image-container img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Responsive scaling for smaller screens */
+@media (max-width: 768px) {
+    .image-container img {
+        max-width: 150px; /* Smaller max width for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .image-container img {
+        max-width: 120px; /* Further smaller max width for very small screens */
+    }
+}
+
 
