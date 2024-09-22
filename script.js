@@ -108,9 +108,9 @@ function addStationImages() {
 
     // Create clickable image elements for station1, station2, and station3
     const stations = [
-        { name: 'Station1', file: 'Station1.png', url: '#station1' },
-        { name: 'Station2', file: 'Station2.png', url: '#station2' },
-        { name: 'Station3', file: 'Station3.png', url: '#station3' }
+        { name: 'Station1', file: 'Inside.png', url: '#station1' },
+        { name: 'Station2', file: 'Onside.png', url: '#station2' },
+        { name: 'Station3', file: 'Outside.png', url: '#station3' }
     ];
 
     stations.forEach(station => {
