@@ -8,10 +8,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve static files from the "src" directory
-app.use(express.static(__dirname + '/src'));
+app.use(express.static(__dirname));
 
 // Serve index.html at the root
-const chatBotPath = __dirname + '/src/index.html';
+const chatBotPath = __dirname + '/index.html';
 
 app.get('/', (req, res) => {
     res.sendFile(chatBotPath);
